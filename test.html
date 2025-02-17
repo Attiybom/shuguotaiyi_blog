@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="左右布局的博客文章静态网站模板">
-    <title>博客文章</title>
+    <meta name="description" content="博客文章静态网站">
+    <title>鼠国太医博客文章</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             background-color: #f4f4f4;
         }
         nav {
-            width: 250px;
+            width: 450px;
             background-color: #333;
             color: white;
             padding: 20px;
@@ -40,7 +40,7 @@
         .content {
             flex-grow: 1;
             padding: 20px;
-            max-width: 1000px;
+            max-width: 2000px;
             margin: 20px;
             background-color: white;
             box-sizing: border-box;
@@ -55,15 +55,20 @@
             color: #888;
             margin-bottom: 1rem;
         }
+        .markdown-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- 引入 marked.js -->
 </head>
 <body>
     <nav>
-        <h2>文章目录</h2>
+        <h2>鼠国太医文章目录</h2>
         <ul>
             <li><a href="javascript:void(0)" onclick="showArticle('article1')">功能医学介绍</a></li>
-            <li><a href="javascript:void(0)" onclick="showArticle('article2')">文章二标题</a></li>
-            <li><a href="javascript:void(0)" onclick="showArticle('article3')">文章三标题</a></li>
+            <li><a href="javascript:void(0)" onclick="showArticle('article2')">希望我成为中国ADHD科普推广大使</a></li>
+            <li><a href="javascript:void(0)" onclick="showArticle('article3')">维生素D服用剂量与血液水平</a></li>
         </ul>
     </nav>
 
@@ -71,7 +76,32 @@
         <article id="article1">
             <h1>功能医学介绍</h1>
             <div class="post-meta">
-              20世纪初，人类面临的主要疾病是感染和外伤。
+                <span>发布者：鼠国太医</span> | <span>编辑于 2024-09-27 16:21</span>
+            </div>
+            <div class="markdown-content" id="content1"></div> <!-- 用于插入 Markdown 内容 -->
+        </article>
+
+        <article id="article2" style="display:none;">
+            <h1>希望我成为中国ADHD科普推广大使</h1>
+            <div class="post-meta">
+                <span>发布者：鼠国太医</span> | <span>编辑于 2025-02-17 02:07</span>
+            </div>
+            <div class="markdown-content" id="content2"></div>
+        </article>
+
+        <article id="article3" style="display:none;">
+            <h1>维生素D服用剂量与血液水平</h1>
+            <div class="post-meta">
+                <span>发布者：鼠国太医</span> | <span>编辑于 2025-01-09 22:39</span>
+            </div>
+            <div class="markdown-content" id="content3"></div>
+        </article>
+    </div>
+
+    <script>
+        // 模拟加载 Markdown 数据
+        const article1Markdown = `
+20世纪初，人类面临的主要疾病是感染和外伤。
 
 在世界大战中，最重要的医疗技术是手术，最重要的药品是青霉素。
 
@@ -108,36 +138,112 @@
 [momo：《功能医学经验分享》专栏导航](https://zhuanlan.zhihu.com/p/721143242?utm_psn=1823034513153994752)
 
 [1]:《功能医学概论》
+`;
 
-            </div>
-        </article>
+        const article2Markdown = `
+我们身边的ADHD非常多，人群发病率5％-10％，一个班里3-5个。
 
-        <article id="article2" style="display:none;">
-            <h1>文章二标题</h1>
-            <div class="post-meta">
-                <span>发布者：作者姓名</span> | <span>发布日期：2025年2月18日</span>
-            </div>
-            <p>这是文章二的内容。这部分是文章二的第一段内容。</p>
-            <p>文章二继续。可以包含更多段落内容，或者其他HTML元素。</p>
-        </article>
+​由于是家族式遗传，一大家族人里可能有一半人都是ADHD。
 
-        <article id="article3" style="display:none;">
-            <h1>文章三标题</h1>
-            <div class="post-meta">
-                <span>发布者：作者姓名</span> | <span>发布日期：2025年2月19日</span>
-            </div>
-            <p>这是文章三的内容。这部分是文章三的第一段内容。</p>
-            <p>文章三继续。可以包含更多段落内容，或者其他HTML元素。</p>
-        </article>
-    </div>
+ADHD多基因疾病，意味着轻重程度都不同（这也代表着智商高度遗传？）
 
-    <script>
+ADHD的亚型与额叶不同位置的异常有关。[1]
+
+​因为科学普及的落后，这些孩子一辈子无法得到确诊，只是被人称为捣蛋的孩子。
+
+​成绩差、偏科、拖拉、熬夜、迟到、不写作业、内向。
+
+​成年人的症状就是懒惰、易怒、反社会。
+
+​发达国家已经把ADHD列为残疾，全社会对待ADHD会有诸多福利保障，如考试时间延长，神经科看病报销。
+
+​而在我们身边，你周围那些看上去懒散、好吃懒做、乱丢垃圾、不干正事的人，99％是ADHD。
+
+​一抓一个准，ADHD的基因导致无法向正常人一样用意识控制躯体，唯一的本能就是靠兴趣驱动。（可能的基因突变:DRD4-7R、DAT1、COMT、DRD5、MAO）
+
+​小时候可能是爱打游戏、贪玩不写作业。
+
+​ADHD唯一能做出贡献自身价值的，就是兴趣爱好。兴趣激活时可大量分泌多巴胺投射至额叶，激活注意力，使得ADHD开始思考和产生意识。（紧张压力也可投射去甲肾上腺素，但是人不可能一直有压力）
+
+因此，如果发现自己有ADHD症状，尽早开始找自己的兴趣爱好，把这个爱好当做谋生的手艺和饭碗。
+
+人脑分主动注意力和被动注意力，主动注意力由前额叶意识主导，ADHD只影响额叶主动注意，对被动注意不影响。[2]
+
+（猜测ADHD被动式的研究兴趣爱好时投射多巴胺可产生注意力，代偿掉额叶多巴胺不足）
+
+![](https://pic1.zhimg.com/v2-2c9dec0bf0dd0a66402a8f4dc8d1326a_720w.jpg?source=d16d100b)
+
+
+
+
+![](https://pica.zhimg.com/v2-93a0ae1a73e3e84c836d39f39459f631_720w.jpg?source=d16d100b)
+
+额外补充:
+
+ADHD可以通过改善身体健康达到基因允许的上限。（大脑炎症与注意力缺陷有关系）
+
+[维他：ADHD多动症：剔除人造色素的饮食，补充营养素](https://zhuanlan.zhihu.com/p/205619044?utm_psn=1846543911817965569)
+
+[1]STAHL精神药理学精要，神经科学基础与临床应用
+
+[2]喻东山《精神病理学》
+`;
+
+        const article3Markdown = `
+数据来源:小红书网友发帖分享。
+
+![](https://picx.zhimg.com/v2-d8039ac939926aab9b8171d386b4b019_720w.jpg?source=d16d100b)
+
+描点画线后，维生素D服用剂量与血液25羟基维生素D水平粗略成线性关系。
+
+不服用维生素D时，多数人可能在30ng左右，每一万单位提升30ng/ml的血液水平。
+
+依据每个人服用方式、日晒和食物补充、炎症水平、维生素K和镁的搭配，每个人有较大差异。
+
+拟合函数y＝40*x+30，x单位为万IU，y单位为ng/ml。
+
+不服用:30
+
+1万:70
+
+2万:110
+
+3万:150
+
+4万:190
+
+5万:230
+
+这个数据粗略符合我自身体验，我不服用维生素D时数据为42-45ng/ml，比较稳定。
+
+服用2万，3万单位时，数据已经＞70，医院检测不出来，我个人估计在90-120左右。
+
+有另外一种算法:把补充的维生素D的剂量/200就是提升的血液浓度。
+
+如10000IU/200＝提升50ng
+
+20000IU/200＝提升100ng
+
+3万IU/200＝提升150ng
+
+4万IU/200＝提升200ng
+
+5万IU/200＝提升250ng
+
+搭配维生素K和甘氨酸镁，目前还活着，没中毒。
+
+1万单位是科英布拉博士推荐非常安全合适的剂量，适合每个人服用，大约血液80ng作用，这个水平可以抑制许多炎症和自身抗体。
+`;
+
+        // 将 Markdown 内容转换为 HTML 并插入到页面中
+        document.getElementById('content1').innerHTML = marked.parse(article1Markdown);
+        document.getElementById('content2').innerHTML = marked.parse(article2Markdown);
+        document.getElementById('content3').innerHTML = marked.parse(article3Markdown);
+
+        // 显示相应的文章
         function showArticle(articleId) {
-            // 隐藏所有文章
             let articles = document.querySelectorAll('.content article');
             articles.forEach(article => article.style.display = 'none');
-
-            // 显示选中的文章
             let selectedArticle = document.getElementById(articleId);
             if (selectedArticle) {
                 selectedArticle.style.display = 'block';
