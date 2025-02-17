@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="左右布局的博客文章静态网站模板">
+    <title>博客文章</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #f4f4f4;
+        }
+        nav {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        nav h2 {
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 10px 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px;
+            background-color: white;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .post-meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+        .markdown-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- 引入 marked.js -->
+</head>
+<body>
+    <nav>
+        <h2>文章目录</h2>
+        <ul>
+            <li><a href="javascript:void(0)" onclick="showArticle('article1')">文章一标题</a></li>
+            <li><a href="javascript:void(0)" onclick="showArticle('article2')">文章二标题</a></li>
+            <li><a href="javascript:void(0)" onclick="showArticle('article3')">文章三标题</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <article id="article1">
+            <h1>文章一标题</h1>
+            <div class="post-meta">
+                <span>发布者：作者姓名</span> | <span>发布日期：2025年2月17日</span>
+            </div>
+            <div class="markdown-content" id="content1"></div> <!-- 用于插入 Markdown 内容 -->
+        </article>
+
+        <article id="article2" style="display:none;">
+            <h1>文章二标题</h1>
+            <div class="post-meta">
+                <span>发布者：作者姓名</span> | <span>发布日期：2025年2月18日</span>
+            </div>
+            <div class="markdown-content" id="content2"></div>
+        </article>
+
+        <article id="article3" style="display:none;">
+            <h1>文章三标题</h1>
+            <div class="post-meta">
+                <span>发布者：作者姓名</span> | <span>发布日期：2025年2月19日</span>
+            </div>
+            <div class="markdown-content" id="content3"></div>
+        </article>
+    </div>
+
+    <script>
+        // 模拟加载 Markdown 数据
+        const article1Markdown = `
+20世纪初，人类面临的主要疾病是感染和外伤。
+
+在世界大战中，最重要的医疗技术是手术，最重要的药品是青霉素。
+
+在二战后，世界进入相对和平的发展阶段，外伤大大减少。
+
+随着青霉素的开发推广，人类寿命延长了15年。
+
+在20世纪后期，西方发达国家寿命进入老龄化阶段，人们的健康压力已经由急性病逐渐转变为了慢性病。
+
+在巨大的需求下，无数科学家前仆后继，为研究人类健康做出了巨大的贡献。
+
+双诺贝尔奖获得者:鲍林博士，1970年出版《维生素C与普通感冒》，提出每天服用1000mg维生素c可以减轻感冒症状，但遭到了很多反对。在鲍林去世前，几乎是孤军奋战的与医学界人士争论，奋起捍卫自己的观点。[1]
+
+1993年，鲍林弟子布兰德博士建立功能医学研究院。至今，美国已经有十万名功能医学医生。[1]
+
+先问一个问题？
+
+你觉得你的疾病是一天得的吗？
+
+当然不是，如果不是，你吃药又怎么能好呢？
+
+人的衰老是一天天逐渐衰老的，逆转衰老也只能通过每天坚持调理。
+
+这就是功能医学。
+
+功能医学不是感染了可以杀死细菌，而是在生活压力、慢性病下调理，缓解疾病。
+
+人体本身就是个低熵系统，每天会因为肠道坏细菌、紫外线等等外界因素导致衰老和熵增。
+
+而衰老严重积累到一定程度就是临床疾病。
+
+更需要我们日常的抗衰养生。
+
+[momo：《功能医学经验分享》专栏导航](https://zhuanlan.zhihu.com/p/721143242?utm_psn=1823034513153994752)
+
+[1]:《功能医学概论》
+`;
+
+        const article2Markdown = `
+# 文章二标题
+
+这是另一篇文章的内容。
+
+## 关于Markdown
+Markdown 是一种轻量级标记语言，常用于编写文档和博客文章。
+
+- 这是一个项目
+- 这是另一个项目
+        `;
+
+        const article3Markdown = `
+# 文章三标题
+
+这篇文章讲解如何通过 JavaScript 和 marked.js 渲染 Markdown 内容。
+
+## 如何使用
+1. 在页面中引入 marked.js
+2. 使用 JavaScript 将 Markdown 转换为 HTML
+        `;
+
+        // 将 Markdown 内容转换为 HTML 并插入到页面中
+        document.getElementById('content1').innerHTML = marked.parse(article1Markdown);
+        document.getElementById('content2').innerHTML = marked.parse(article2Markdown);
+        document.getElementById('content3').innerHTML = marked.parse(article3Markdown);
+
+        // 显示相应的文章
+        function showArticle(articleId) {
+            let articles = document.querySelectorAll('.content article');
+            articles.forEach(article => article.style.display = 'none');
+            let selectedArticle = document.getElementById(articleId);
+            if (selectedArticle) {
+                selectedArticle.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
